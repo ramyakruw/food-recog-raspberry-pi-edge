@@ -14,6 +14,9 @@ from PIL import Image
 # Imports for prediction
 from predict import initialize, predict_image, predict_url
 
+# Imports for nutrition facts
+from nutrition import get_nutrition_facts
+
 app = Flask(__name__)
 
 # 4MB Max image size limit
@@ -38,7 +41,8 @@ def predict_image_handler():
 
         #img = scipy.misc.imread(imageData)
         img = Image.open(imageData)
-        results = predict_image(img)
+        image_name = predict_image(img)
+        results = get_nutrition_facts(image_name)
         return json.dumps(results)
     except Exception as e:
         print('EXCEPTION:', str(e))
@@ -52,7 +56,8 @@ def predict_image_handler():
 def predict_url_handler():
     try:
         image_url = json.loads(request.get_data())['Url']
-        results = predict_url(image_url)
+        image_name = predict_image(img)
+        results = get_nutrition_facts(image_name)
         return json.dumps(results)
     except Exception as e:
         print('EXCEPTION:', str(e))
@@ -63,5 +68,5 @@ if __name__ == '__main__':
     initialize()
 
     # Run the server
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='127.0.0.1', port=8080)
 

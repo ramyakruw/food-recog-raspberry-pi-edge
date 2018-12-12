@@ -13,8 +13,6 @@ from iothub_client import IoTHubModuleClient, IoTHubClientError, IoTHubTransport
 from iothub_client import IoTHubMessage, IoTHubMessageDispositionResult, IoTHubError, DeviceMethodReturnValue
 import DisplayManager
 from DisplayManager import DisplayManager
-import MessageParser
-from MessageParser import MessageParser
 import json
 
 RECEIVE_CALLBACKS = 0
@@ -26,8 +24,8 @@ def receive_message_callback(message, HubManager):
     print("Received message #: "+ str(RECEIVE_CALLBACKS))
     message_buffer = message.get_bytearray()
     body=message_buffer[:len(message_buffer)].decode('utf-8')
-    allTagsAndProbability = json.loads(body)
-    DISPLAY_MANAGER.displayImage(MESSAGE_PARSER.highestProbabilityTagMeetingThreshold(allTagsAndProbability, THRESHOLD))
+    nutrition_facts = json.loads(body)
+    DISPLAY_MANAGER.display_nutrition_facts(nutrition_facts)
     return IoTHubMessageDispositionResult.ACCEPTED
 
 class HubManager(object):
@@ -46,18 +44,12 @@ class HubManager(object):
         self.client.set_message_callback("input1", receive_message_callback, self)
         print ( "Module is now waiting for messages in the input1 queue.")
 
-        
-
-
-
 def main():
     try:
-        print ( "Starting the SenseHat module...")
+        print ( "Starting the Display module...")
 
         global DISPLAY_MANAGER
-        global MESSAGE_PARSER
         DISPLAY_MANAGER = DisplayManager()
-        MESSAGE_PARSER = MessageParser()
         hubManager = HubManager()
 
         while True:

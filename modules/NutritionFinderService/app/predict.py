@@ -10,6 +10,8 @@ import numpy as np
 import sys
 import os  
 
+import constants
+
 filename = 'model.pb'
 labels_filename = 'labels.txt'
 
@@ -101,10 +103,14 @@ def predict_image(image):
 
         result = []
         idx = 0
+        max_probablity = 0
+        label_with_max_probablity = UNKNOWN_FOOD
         for p in predictions:
             truncated_probablity = np.float64(round(p,8))
-            if (truncated_probablity > 1e-8):
+            if (truncated_probablity > 1e-8 and truncated_probablity > max_probablity):
                 result.append({'Tag': labels[idx], 'Probability': truncated_probablity })
+                label_with_max_probablity = labels[idx]
             idx += 1
         print('Results: ', str(result))
-        return result
+        print('Label with max probablity: ', label_with_max_probablity)
+        return label_with_max_probablity

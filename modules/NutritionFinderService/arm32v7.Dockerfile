@@ -15,16 +15,16 @@ RUN apt-get update &&  apt-get install -y \
         libatlas-base-dev \
         wget
 
-COPY /build/arm32v7-requirements.txt arm32v7-requirements.txt
+COPY /build/arm32v7-requirements.txt requirements.txt
 
 RUN pip3 install --upgrade pip 
 RUN pip3 install --upgrade setuptools 
-RUN pip3 install -r arm32v7-requirements.txt
+RUN pip3 install -r requirements.txt
 
 ADD app /app
 
 # Expose the port
-EXPOSE 80
+EXPOSE 8080
 
 # Set the working directory
 WORKDIR /app

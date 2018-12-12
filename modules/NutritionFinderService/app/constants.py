@@ -1,0 +1,1 @@
+UNKNOWN_FOOD = "unknown food"
