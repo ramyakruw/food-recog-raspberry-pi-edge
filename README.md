@@ -10,4 +10,4 @@ Based on [this article](https://github.com/Azure-Samples/Custom-vision-service-i
 
 ### Communication between modules
 
-![Communication patterns between modules](assets/food-recog-architecture.png)
+![Communication patterns between modules](assets/food-recog-design.png)
