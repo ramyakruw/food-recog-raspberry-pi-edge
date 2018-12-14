@@ -1,2 +1,4 @@
+numpy
 requests
-azure-iothub-device-client==1.4.0
+rtimulib
+azure-iothub-device-client

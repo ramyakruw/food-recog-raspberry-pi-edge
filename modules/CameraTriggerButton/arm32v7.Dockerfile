@@ -22,7 +22,15 @@ RUN pip install -r arm32v7-requirements.txt
 #Needed by iothub_client
 RUN apt-get install -y libboost-python1.62.0
 
+#Extra dependencies to use lcd display on this distribution
+RUN apt-get update && apt-get install -y \
+    libatlas-base-dev \
+    libopenjp2-7 \
+    libtiff-tools \
+    i2c-tools
+
 ADD /app/ .
+ADD /build/ .
 
 RUN [ "cross-build-end" ]  
 
