@@ -5,9 +5,8 @@ author: ramyakruw
 ---
 
 # Food Nutrition Finder + Custom Vision + Azure IoT Edge on a Raspberry Pi 3
-
-Based on [this article](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi)
-
 ### Communication between modules
 
 ![Communication patterns between modules](assets/food-recog-design.png)
+
+Ref: [Azure custom visioin service](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi)
