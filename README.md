@@ -9,4 +9,5 @@ author: ramyakruw
 
 ![Communication patterns between modules](assets/food-recog-design.png)
 
-Ref: [Azure custom vision](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi)
+Ref: [Azure IOT edge concepts](https://docs.microsoft.com/en-us/azure/iot-edge/iot-edge-runtime)
+Ref: [Azure custom vision sample](https://azure.microsoft.com/en-us/resources/samples/custom-vision-service-iot-edge-raspberry-pi/)
